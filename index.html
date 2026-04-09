@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoLAB — Create Together</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <!-- SCANLINE OVERLAY -->
+  <div class="scanlines"></div>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-logo">Co<span class="glitch-text" data-text="LAB">LAB</span></div>
+    <div class="topbar-status">
+      <span class="status-dot"></span>
+      <span class="status-text">KAI DAVIS</span>
+    </div>
+  </header>
+
+  <!-- TAB CONTENT -->
+  <main class="tab-content">
+
+    <!-- TAB: DROP -->
+    <section id="tab-drop" class="tab-panel active">
+      <div class="feed-header">
+        <h2 class="feed-title">THE DROP</h2>
+        <div class="filter-chips">
+          <button class="chip active">ALL</button>
+          <button class="chip">MUSIC</button>
+          <button class="chip">DESIGN</button>
+          <button class="chip">FILM</button>
+          <button class="chip">CODE</button>
+        </div>
+      </div>
+      <div class="feed-grid" id="drop-feed"></div>
+    </section>
+
+    <!-- TAB: MESSAGES -->
+    <section id="tab-messages" class="tab-panel">
+      <div class="section-header">
+        <h2>MESSAGES</h2>
+        <span class="badge-count">3</span>
+      </div>
+      <div id="message-list" class="message-list"></div>
+      <div id="chat-view" class="chat-view hidden"></div>
+    </section>
+
+    <!-- TAB: HANDSHAKE -->
+    <section id="tab-handshake" class="tab-panel">
+      <div class="section-header">
+        <h2>HANDSHAKE</h2>
+        <span class="hs-status">ACTIVE</span>
+      </div>
+      <div class="swipe-arena">
+        <div id="swipe-card-container"></div>
+        <div class="swipe-actions">
+          <button class="swipe-btn pass" id="btn-pass">✕ PASS</button>
+          <button class="swipe-btn match" id="btn-match">♥ VIBE</button>
+        </div>
+        <div class="swipe-counter"><span id="cards-remaining">5</span> profiles left</div>
+      </div>
+      <div id="match-modal" class="match-modal hidden">
+        <div class="match-modal-inner">
+          <div class="match-glitch-text" data-text="YOU MATCHED">YOU MATCHED</div>
+          <div class="match-avatars">
+            <div class="match-avatar me"></div>
+            <div class="match-zap">⚡</div>
+            <div class="match-avatar them" id="match-avatar-them"></div>
+          </div>
+          <p class="match-name" id="match-name-text"></p>
+          <button class="btn-primary" id="match-dismiss">SEND MESSAGE</button>
+          <button class="btn-ghost" id="match-skip">KEEP SWIPING</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: JOBS -->
+    <section id="tab-jobs" class="tab-panel">
+      <div class="section-header">
+        <h2>JOB BOARD</h2>
+        <span class="new-badge">4 NEW</span>
+      </div>
+      <div class="filter-chips">
+        <button class="chip active">ALL</button>
+        <button class="chip">DESIGN</button>
+        <button class="chip">MUSIC</button>
+        <button class="chip">FILM</button>
+        <button class="chip">DEV</button>
+      </div>
+      <div id="job-list" class="job-list"></div>
+    </section>
+
+    <!-- TAB: PROFILE -->
+    <section id="tab-profile" class="tab-panel">
+      <div class="profile-header">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar"></div>
+          <div class="profile-online-ring"></div>
+        </div>
+        <button class="settings-btn" id="settings-btn">⚙</button>
+        <h2 class="profile-name">KAI DAVIS</h2>
+        <p class="profile-title">Sound Designer × Music Producer</p>
+        <div class="profile-tags">
+          <span class="vibe-tag">glitch</span>
+          <span class="vibe-tag">ambient</span>
+          <span class="vibe-tag">lo-fi</span>
+          <span class="vibe-tag">experimental</span>
+        </div>
+        <div class="profile-stats">
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">MATCHES</span></div>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">COLLABS</span></div>
+          <div class="stat"><span class="stat-num">12</span><span class="stat-label">SAVED</span></div>
+          <div class="stat"><span class="stat-num">847</span><span class="stat-label">FOLLOWERS</span></div>
+        </div>
+      </div>
+      <div class="profile-bio">
+        <p>Making noise in the margins. I turn weird sounds into weirder songs. Looking for visual artists, filmmakers & storytellers to collab with.</p>
+      </div>
+      <div class="profile-section-title">PREVIOUS COLLABS</div>
+      <div class="prev-collabs" id="prev-collabs"></div>
+      <div class="profile-section-title">PORTFOLIO</div>
+      <div class="portfolio-grid" id="portfolio-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="drop">
+      <span class="nav-icon">🎨</span>
+      <span class="nav-label">DROP</span>
+    </button>
+    <button class="nav-btn" data-tab="messages">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">MSG</span>
+      <span class="nav-badge">2</span>
+    </button>
+    <button class="nav-btn" data-tab="handshake">
+      <span class="nav-icon">🤝</span>
+      <span class="nav-label">HANDSHAKE</span>
+    </button>
+    <button class="nav-btn" data-tab="jobs">
+      <span class="nav-icon">💼</span>
+      <span class="nav-label">JOBS</span>
+    </button>
+    <button class="nav-btn" data-tab="profile">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">PROFILE</span>
+    </button>
+  </nav>
+
+  <!-- SETTINGS PANEL -->
+  <div id="settings-overlay" class="settings-overlay hidden"></div>
+  <div id="settings-panel" class="settings-panel hidden">
+    <div class="settings-handle"></div>
+    <h3 class="settings-title">SETTINGS</h3>
+    <div class="settings-list">
+      <div class="setting-row">
+        <div>
+          <div class="setting-name">KEEP AI DUMB</div>
+          <div class="setting-desc">Block all data harvesting & algo profiling</div>
+        </div>
+        <label class="toggle"><input type="checkbox" checked><span class="toggle-slider on"></span></label>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-name">NOTIFICATIONS</div>
+          <div class="setting-desc">Matches, messages, drops</div>
+        </div>
+        <label class="toggle"><input type="checkbox" checked><span class="toggle-slider on"></span></label>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-name">VISIBILITY</div>
+          <div class="setting-desc">Show profile in Handshake feed</div>
+        </div>
+        <label class="toggle"><input type="checkbox" checked><span class="toggle-slider on"></span></label>
+      </div>
+      <div class="setting-row pro-row">
+        <div>
+          <div class="setting-name">⚡ GO PRO</div>
+          <div class="setting-desc">Unlimited collabs, priority drops, custom profile</div>
+        </div>
+        <button class="btn-pro">UPGRADE</button>
+      </div>
+    </div>
+    <button class="btn-ghost settings-close" id="settings-close">CLOSE</button>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
