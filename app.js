@@ -56,7 +56,7 @@ const DROP_CARDS = [
   {
     id: 5,
     title: "Signal/Noise",
-    creators: "KAI DAVIS × ECHO RIVERA",
+    creators: "NO_THE_ROBOT × ECHO RIVERA",
     type: "SOUND + VISUAL",
     emoji: "📡",
     bg: "linear-gradient(135deg,#0d001a,#001a1a)",
@@ -150,6 +150,7 @@ const PROFILES = [
     discipline: "MOTION DESIGNER",
     skills: ["AFTER EFFECTS", "3D", "ILLUSTRATION", "BLENDER"],
     vibe: "weird + cinematic",
+    lookingFor: ["Music Producer", "Musician", "Sound Designer"],
     emoji: "🌀",
     bg: "linear-gradient(135deg,#1a0033,#001a2a)"
   },
@@ -158,6 +159,7 @@ const PROFILES = [
     discipline: "PHOTOGRAPHER",
     skills: ["PORTRAIT", "URBAN", "DARK ROOM", "35MM"],
     vibe: "analog soul",
+    lookingFor: ["Writer", "Poet", "Graphic Designer"],
     emoji: "📷",
     bg: "linear-gradient(135deg,#0d0d00,#1a0d00)"
   },
@@ -166,6 +168,7 @@ const PROFILES = [
     discipline: "MUSIC PRODUCER",
     skills: ["ABLETON", "SOUND DESIGN", "MIXING", "SYNTHESIS"],
     vibe: "glitchy ambient",
+    lookingFor: ["Filmmaker", "Animator", "Motion Designer"],
     emoji: "🎛",
     bg: "linear-gradient(135deg,#001a1a,#0d0033)"
   },
@@ -174,6 +177,7 @@ const PROFILES = [
     discipline: "STORYBOARD ARTIST",
     skills: ["NARRATIVE", "COMICS", "FILM", "INK"],
     vibe: "story-first",
+    lookingFor: ["Director", "Photographer", "Game Developer"],
     emoji: "✏️",
     bg: "linear-gradient(135deg,#1a1a00,#001a0d)"
   },
@@ -182,6 +186,7 @@ const PROFILES = [
     discipline: "GAME DEVELOPER",
     skills: ["UNITY", "PIXEL ART", "SHADERS", "GODOT"],
     vibe: "retro future",
+    lookingFor: ["Sound Designer", "Music Producer", "Writer"],
     emoji: "👾",
     bg: "linear-gradient(135deg,#00001a,#001a0d)"
   }
@@ -476,6 +481,12 @@ function updateSwipeCard() {
           ${p.skills.map(s => `<span class="pc-skill">${s}</span>`).join('')}
         </div>
         <div class="pc-vibe">${p.vibe}</div>
+        <div class="pc-looking-for">
+          <div class="pc-lf-label">SEEKING</div>
+          <div class="pc-lf-tags">
+            ${p.lookingFor.map(role => `<span class="pc-lf-tag">${role}</span>`).join('')}
+          </div>
+        </div>
       </div>
     </div>
   `;
